@@ -1,0 +1,13 @@
+#splash{
+    z-index: 99;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+/*Can't make it correctly 100% height*/
+    object-fit: cover;
+    animation: disappear 0.5s normal 3s forwards
+}
+@keyframes disappear {
+    0% { opacity: 1 }
+    100% { opacity: 0 }
+}

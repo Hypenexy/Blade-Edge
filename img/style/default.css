@@ -1,0 +1,170 @@
+*{outline:0;margin:0;box-sizing: border-box;font-family: 'Roboto', sans-serif}
+/*@font-face{font-family:'Roboto';font-style:normal;font-weight:100;src:url('img/fonts/roboto-v29-latin-100.eot');src:local(''),url('img/fonts/roboto-v29-latin-100.eot?#iefix') format('embedded-opentype'),url('img/fonts/roboto-v29-latin-100.woff2') format('woff2'),url('img/fonts/roboto-v29-latin-100.woff') format('woff'),url('img/fonts/roboto-v29-latin-100.ttf') format('truetype'),url('img/fonts/roboto-v29-latin-100.svg#Roboto') format('svg')}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url('img/fonts/roboto-v29-latin-300.eot');src:local(''),url('img/fonts/roboto-v29-latin-300.eot?#iefix') format('embedded-opentype'),url('img/fonts/roboto-v29-latin-300.woff2') format('woff2'),url('img/fonts/roboto-v29-latin-300.woff') format('woff'),url('img/fonts/roboto-v29-latin-300.ttf') format('truetype'),url('img/fonts/roboto-v29-latin-300.svg#Roboto') format('svg')}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url('img/fonts/roboto-v29-latin-regular.eot');src:local(''),url('img/fonts/roboto-v29-latin-regular.eot?#iefix') format('embedded-opentype'),url('img/fonts/roboto-v29-latin-regular.woff2') format('woff2'),url('img/fonts/roboto-v29-latin-regular.woff') format('woff'),url('img/fonts/roboto-v29-latin-regular.ttf') format('truetype'),url('img/fonts/roboto-v29-latin-regular.svg#Roboto') format('svg')}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;src:url('img/fonts/roboto-v29-latin-500.eot');src:local(''),url('img/fonts/roboto-v29-latin-500.eot?#iefix') format('embedded-opentype'),url('img/fonts/roboto-v29-latin-500.woff2') format('woff2'),url('img/fonts/roboto-v29-latin-500.woff') format('woff'),url('img/fonts/roboto-v29-latin-500.ttf') format('truetype'),url('img/fonts/roboto-v29-latin-500.svg#Roboto') format('svg')}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url('img/fonts/roboto-v29-latin-700.eot');src:local(''),url('img/fonts/roboto-v29-latin-700.eot?#iefix') format('embedded-opentype'),url('img/fonts/roboto-v29-latin-700.woff2') format('woff2'),url('img/fonts/roboto-v29-latin-700.woff') format('woff'),url('img/fonts/roboto-v29-latin-700.ttf') format('truetype'),url('img/fonts/roboto-v29-latin-700.svg#Roboto') format('svg')}@font-face{font-family:'Roboto';font-style:normal;font-weight:900;src:url('img/fonts/roboto-v29-latin-900.eot');src:local(''),url('img/fonts/roboto-v29-latin-900.eot?#iefix') format('embedded-opentype'),url('img/fonts/roboto-v29-latin-900.woff2') format('woff2'),url('img/fonts/roboto-v29-latin-900.woff') format('woff'),url('img/fonts/roboto-v29-latin-900.ttf') format('truetype'),url('img/fonts/roboto-v29-latin-900.svg#Roboto') format('svg')}
+*/  
+html,body,app{display:block;height: 100%;}
+
+body{
+    color: #fff;
+    overflow: hidden;/*cuz i cant fix splash*/
+}
+
+header {
+    display: block;
+    width: 100%;
+    user-select: none;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #555;
+    padding: 5px 5px;
+    height: 60px;
+    transition: 0.2s;
+}
+
+#game{
+    display: block;
+    background: #222242;
+    width: 100%;
+    height: calc(100% - 60px);
+    font-size: 24px;
+    color: #fff;
+    padding: 8px;
+}
+
+::-webkit-scrollbar {
+    width: 15px
+}
+::-webkit-scrollbar-track {
+    background-color: initial
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #444
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #4b4b4b
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #5a5a5a
+}
+
+/* #d39b00 - gold */
+
+.welcome{
+    height: 100%;
+}
+
+.welcome form{
+    user-select: none;
+    /* background: #2f2222; */
+    border: 1px solid #b30c0c;
+    border-radius: 12px;
+
+    box-shadow: 1px 2px 3px #b30c0c55;
+
+    width: 400px;
+    height: 500px;
+
+    padding: 24px;
+
+    position: absolute;
+    top: 40%;
+    left: 40px;
+    transform: translateY(-50%);
+}
+.welcome form:focus-visible{/*good way to indicate but annoying */
+    box-shadow: 1px 2px 3px 6px #b30c0c55;
+}
+.welcome form h1{
+    color: #e46262;
+}
+.welcome form label{
+    display: block;
+    color: #bbb;
+    font-size: 20px;
+    /* border: 1px solid #555; */
+    margin-top: 20px;
+}
+.welcome form label:focus{
+    color: #fff;
+}
+.welcome form input, .welcome form button{
+    display: block; 
+    width: 100%;
+    background: initial;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.welcome form button{
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 50px);
+    cursor: pointer;
+    color: #e46262;
+    margin: 20px 0;
+    transition: 0.3s;
+}
+.welcome form button:hover,.welcome form button:focus-visible, .welcome form input:focus{
+    border: 1px solid #e46262
+}
+.welcome form button:active{
+    background: #e46262;
+    color: #000;
+}
+.welcome a{
+    cursor: pointer;
+    position: absolute;
+    bottom: 80px;
+    left: 30px;
+    color: #e46262;
+    font-weight: 500;
+    transition: 0.1s;
+}
+.welcome a:hover, .welcome a:focus-visible{
+    text-decoration: underline;
+}
+.welcome a:active{
+    color: #b30c0c;
+}
+@media screen and (max-height: 710px) {
+    .welcome form{
+        position: relative;
+        top: 40px;
+        transform: initial;
+    }
+    @media screen and (max-height: 540px) {
+        .welcome form{
+            position: initial;
+            height: 100%;
+            overflow-y: auto;
+            border: 0;
+            border-right: 1px solid #b30c0c;
+            border-radius: 8px;
+        }
+        .welcome a{
+            display: block;
+            margin: 20px 0;
+            position: initial;
+        }
+        .welcome form button{
+            position: initial;
+            width: 100%;
+        }
+    }
+}
+
+
+#music{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+
+    background: #222;
+    /* background: #2f2222; */
+    padding: 12px;
+    border-radius: 12px;
+
+    transition: 0.5s;
+}
