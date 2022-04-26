@@ -167,6 +167,7 @@ header {
     border: 2px solid #b30c0c44;
     border-radius: 12px;
     padding: 12px;
+    overflow-y: auto;
 }
 
 .news .info{
