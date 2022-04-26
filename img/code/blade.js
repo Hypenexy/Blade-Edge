@@ -1,3 +1,4 @@
+var server = "http://localhost/BladeEdge/"
 var settings = {}
 try {
     settings = JSON.parse(localStorage.getItem("settings"))
@@ -59,6 +60,21 @@ function initApp(){
     var welcomescreen = document.createElement("div")
     welcomescreen.classList.add("welcome")
     welcomescreen.innerHTML = "<form>" + login + "</form>"
+
+    var news = document.createElement("div")
+    news.classList.add("news")
+
+    $.ajax({
+        url: server + "app/news.php",
+        success: function (response) {
+            news.innerHTML = response
+            app.appendChild(news)
+        },
+        error: function() {
+            newsstuff = "Could not connect to server."
+        }
+    });
+
 
     function initForm(login, show){
         welcomescreen.getElementsByTagName("form")[0].innerHTML = login
