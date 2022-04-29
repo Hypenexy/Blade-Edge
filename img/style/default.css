@@ -163,6 +163,7 @@ header {
     min-width: 300px;
     width: calc(100% - 500px);
     max-width: 1200px;
+    min-width: 326px;
     height: calc(100% - 60px);
     border: 2px solid #b30c0c44;
     border-radius: 12px;
