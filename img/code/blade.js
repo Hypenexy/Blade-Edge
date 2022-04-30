@@ -93,7 +93,7 @@ function initApp(){
             e.preventDefault()
             $.ajax({
                 type : "post",
-                data : {username : inputs[0].value, password : inputs[1].value},
+                data : {identity : inputs[0].value, password : inputs[1].value},
                 url: server + "app/login.php",
                 success: function (response) {
                     if(response!=201){

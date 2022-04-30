@@ -1,12 +1,11 @@
 <?php
-require("../../app/server/account/checks.php");
-require("../../app/server/db.php");
-require("../../app/server/mdcrypt.php");
-require("../../app/server/session.php");
-
-$conn = new mysqli($host, $user, $pass, 'bladeedge');
-
 if(isset($_POST["email"])&&isset($_POST["username"])&&isset($_POST["password"])){
+    require("../../app/server/account/checks.php");
+    require("../../app/server/db.php");
+    require("../../app/server/mdcrypt.php");
+    require("../../app/server/session.php");
+
+    $conn = new mysqli($host, $user, $pass, 'bladeedge');
     $valemail = ValidateEmail($_POST["email"], $conn, "bladeedge");
     $valusername = ValidateUsername($_POST["username"], $conn, "bladeedge");
     $valpassword = ValidatePassword($_POST["password"], $conn, "bladeedge");
@@ -46,4 +45,5 @@ if(isset($_POST["email"])&&isset($_POST["username"])&&isset($_POST["password"]))
             }
         }
     }
+    $conn->close();
 }
