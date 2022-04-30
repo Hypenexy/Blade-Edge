@@ -36,6 +36,7 @@ function initApp(){
             `+locale.password+`
                 <input type='password' id='loginpassword'>
             </label>
+            <p class='error'></p>
             <a>`+locale.registerinstead+`</a>
             <button>`+locale.login+`</button>
     `
@@ -54,6 +55,7 @@ function initApp(){
             `+locale.password+`
                 <input type='password' id='loginpassword'>
             </label>
+            <p></p>
             <a>`+locale.logininstead+`</a>
             <button>`+locale.register+`</button>
     `
@@ -75,20 +77,69 @@ function initApp(){
         }
     });
 
-
+    var form
     function initForm(login, show){
-        welcomescreen.getElementsByTagName("form")[0].innerHTML = login
-        ButtonEvent(app.getElementsByTagName("a")[0], show)
+        form = welcomescreen.getElementsByTagName("form")[0]
+        form.innerHTML = login
+        ButtonEvent(form.getElementsByTagName("a")[0], show)
     }
 
-    //TODO: create restrictions like length and shit
-    
     function showLogin(){
         initForm(login, showRegister)
+        var errorEl = form.getElementsByTagName("p")[0]
+        var inputs = form.getElementsByTagName("input")
+        errorEl.style.background = "initial"
+        form.onsubmit = function(e){
+            e.preventDefault()
+            $.ajax({
+                type : "post",
+                data : {username : inputs[0].value, password : inputs[1].value},
+                url: server + "app/login.php",
+                success: function (response) {
+                    if(response!=201){
+                        if(errorEl.style.background){
+                            errorEl.style.removeProperty("background")
+                        }
+                        errorEl.innerHTML = response
+                    }
+                    else{
+                        loadUser()
+                    }
+                },
+                error: function() {
+                    PushNotification("Cannot connect to server!")
+                }
+            });
+        }
     }
-
+    
     function showRegister(){
         initForm(register, showLogin)
+        var errorEl = form.getElementsByTagName("p")[0]
+        var inputs = form.getElementsByTagName("input")
+        errorEl.style.background = "initial"
+        form.onsubmit = function(e){
+            e.preventDefault()
+            $.ajax({
+                type : "post",
+                data : {email : inputs[0].value, username : inputs[1].value, password : inputs[2].value},
+                url: server + "app/register.php",
+                success: function (response) {
+                    if(response!=201){
+                        if(errorEl.style.background){
+                            errorEl.style.removeProperty("background")
+                        }
+                        errorEl.innerHTML = response
+                    }
+                    else{
+                        loadUser()
+                    }
+                },
+                error: function() {
+                    PushNotification("Cannot connect to server!")
+                }
+            });
+        }
     }
 
     // var welcomescreen = `

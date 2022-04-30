@@ -96,7 +96,17 @@ header {
     border-radius: 8px;
     padding: 12px;
 }
-
+.welcome form p{
+    user-select: text;
+    display: block;
+    background: #e46262;
+    color: #000;
+    margin: 15px 0;
+    padding: 4px 12px;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: 0.4s;
+}
 .welcome form button{
     position: absolute;
     bottom: 0;
