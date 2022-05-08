@@ -6,6 +6,9 @@ if(isset($_POST["email"])&&isset($_POST["username"])&&isset($_POST["password"]))
     require("../../app/server/session.php");
 
     $conn = new mysqli($host, $user, $pass, 'bladeedge');
+    $datatosend = (object) [];
+    $datatosend->user = (object) [];
+
     $valemail = ValidateEmail($_POST["email"], $conn, "bladeedge");
     $valusername = ValidateUsername($_POST["username"], $conn, "bladeedge");
     $valpassword = ValidatePassword($_POST["password"], $conn, "bladeedge");
@@ -22,28 +25,33 @@ if(isset($_POST["email"])&&isset($_POST["username"])&&isset($_POST["password"]))
 
         $useridquery = mysqli_query($conn, "SELECT * FROM `profiles` WHERE username='$username'");
         $userid = mysqli_fetch_array($useridquery)["id"];
-        //i have to get user id!
+
         $sql = "INSERT INTO `stats` (`userid`) VALUES ('$userid')";
         $conn->query($sql);
 
         $_SESSION['id'] = $userid;
         
-        echo 201;
+		$datatosend->user->username = $row['username'];
+		$datatosend->user->email = $row['email'];
+		$datatosend->status = 201;
     }
     else{
         if($valemail!=201){
-            echo $valemail;
+            $datatosend->status = $valemail;
         }
         else{
             if($valusername!=201){
-                echo $valusername;
+                $datatosend->status = $valusername;
             }
             else{
                 if($valpassword!=201){
-                    echo $valpassword;
+                    $datatosend->status = $valpassword;
                 }
             }
         }
     }
-    $conn->close();
+
+	echo json_encode($datatosend);
+
+	$conn->close();
 }

@@ -20,3 +20,6 @@ querySQL($sql, $conn, $reason);
 $sql = "CREATE TABLE `$databaseName`.`matches` ( `userid` BIGINT NOT NULL , `victimuserid` BIGINT NOT NULL , `result` INT NOT NULL ) ENGINE = InnoDB;";
 $reason = "Create matches' table";
 querySQL($sql, $conn, $reason);
+$sql = "CREATE TABLE `$databaseName`.`friends` ( `userid` BIGINT NOT NULL , `friendid` BIGINT NOT NULL ) ENGINE = InnoDB;";
+$reason = "Create friends' table";
+querySQL($sql, $conn, $reason);
