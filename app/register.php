@@ -24,13 +24,14 @@ if(isset($_POST["email"])&&isset($_POST["username"])&&isset($_POST["password"]))
 
 
         $useridquery = mysqli_query($conn, "SELECT * FROM `profiles` WHERE username='$username'");
-        $userid = mysqli_fetch_array($useridquery)["id"];
+        $row = $useridquery->fetch_assoc();
+        $userid = $row["id"];
 
         $sql = "INSERT INTO `stats` (`userid`) VALUES ('$userid')";
         $conn->query($sql);
 
         $_SESSION['id'] = $userid;
-        
+    
 		$datatosend->user->username = $row['username'];
 		$datatosend->user->email = $row['email'];
 		$datatosend->status = 201;
